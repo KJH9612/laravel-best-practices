@@ -2,11 +2,12 @@
 
 Translations:
 
-[Русский : Russian](russian.md)
-[임영록(cherrypick) : Korean](korean.md)
+- [Русский : Russian](russian.md)
+- [임영록(cherrypick) : Korean](korean.md)
 
 이 문서가 도움이 되셨다면 현재 레퍼지토리뿐만 아니라, 기존의 레퍼지토리도 Star 한 번씩 눌러주시면 감사하겠습니다. :D
-기존의 레퍼지토리 : https://github.com/alexeymezenin/laravel-best-practices
+<br>
+https://github.com/alexeymezenin/laravel-best-practices
 
 이 문서는 라라벨 프레임워크에서 객체지향 디자인의 5원칙(SOLID), 패턴을 적용한 내용이 아닙니다. 라라벨 프레임워크로 프로젝트를 진행하면서 놓칠 수 있는 Best practice에 대해 정리한 글입니다.
 
