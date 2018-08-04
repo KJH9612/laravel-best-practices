@@ -22,7 +22,7 @@ Translations:
 
 [비즈니스 로직은 서비스 클래스에 있어야 합니다](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
 
-[중복 배제(Don't repeat yourself)](#dont-repeat-yourself-dry)
+[중복 배제(Don't repeat yourself)](#중복-배제dont-repeat-yourself)
 
 [Prefer to use Eloquent over using Query Builder and raw SQL queries. Prefer collections over arrays](#prefer-to-use-eloquent-over-using-query-builder-and-raw-sql-queries-prefer-collections-over-arrays)
 
@@ -220,9 +220,9 @@ class ArticleService
 
 ### **중복 배제(Don't repeat yourself)**
 
-Reuse code when you can. SRP is helping you to avoid duplication. Also, reuse Blade templates, use Eloquent scopes etc.
+코드를 재사용합니다. 단일 책임 원칙뿐만 아니라 Blade templetes, Eloquent scope 등은 코드의 중복을 피할 수 있도록 도와줍니다.
 
-Bad:
+나쁜 예:
 
 ```php
 public function getActive()
@@ -238,7 +238,7 @@ public function getArticles()
 }
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function scopeActive($q)
@@ -259,7 +259,7 @@ public function getArticles()
 }
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Prefer to use Eloquent over using Query Builder and raw SQL queries. Prefer collections over arrays**
 
