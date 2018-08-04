@@ -26,7 +26,7 @@ Translations:
 
 [Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다.](#query-builder-raw-sql-쿼리보다-eloquent를-사용하는-것이-좋습니다)
 
-[Mass assignment](#mass-assignment)
+[Mass assignment-대량 할당](#mass-assignment)
 
 [Do not execute queries in Blade templates and use eager loading (N + 1 problem)](#do-not-execute-queries-in-blade-templates-and-use-eager-loading-n--1-problem)
 
@@ -291,9 +291,9 @@ Article::has('user.profile')->verified()->latest()->get();
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Mass assignment**
+### **Mass assignment-대량 할당**
 
-Bad:
+나쁜 예:
 
 ```php
 $article = new Article;
@@ -305,13 +305,13 @@ $article->category_id = $category->id;
 $article->save();
 ```
 
-Good:
+좋은 예:
 
 ```php
 $category->article()->create($request->all());
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Do not execute queries in Blade templates and use eager loading (N + 1 problem)**
 
