@@ -3,6 +3,7 @@
 Translations:
 
 [Русский](russian.md)
+[임영록(Cherrypick)](korean.md)
 
 
 
