@@ -53,7 +53,7 @@ Translations:
 
 ### **Single responsibility principle**
 
-클래스와 메서드는하나의 책임만있어야 합니다.
+클래스와 메서드는 하나의 책임만있어야 합니다.
 
 나쁜 예:
 
