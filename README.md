@@ -24,7 +24,7 @@ Translations:
 
 [중복 배제(Don't repeat yourself)](#중복-배제dont-repeat-yourself)
 
-[Prefer to use Eloquent over using Query Builder and raw SQL queries. Prefer collections over arrays](#prefer-to-use-eloquent-over-using-query-builder-and-raw-sql-queries-prefer-collections-over-arrays)
+[Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다. 그리고 배열보다는 컬렉션의 사용하는 것이 좋습니다.](#prefer-to-use-eloquent-over-using-query-builder-and-raw-sql-queries-prefer-collections-over-arrays)
 
 [Mass assignment](#mass-assignment)
 
@@ -261,7 +261,7 @@ public function getArticles()
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Prefer to use Eloquent over using Query Builder and raw SQL queries. Prefer collections over arrays**
+### **Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다. 그리고 배열보다는 컬렉션의 사용하는 것이 좋습니다.**
 
 Eloquent allows you to write readable and maintainable code. Also, Eloquent has great built-in tools like soft deletes, events, scopes etc.
 
@@ -288,7 +288,7 @@ Good:
 Article::has('user.profile')->verified()->latest()->get();
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Mass assignment**
 
