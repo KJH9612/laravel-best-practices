@@ -15,7 +15,7 @@ Translations:
 
 ## Contents
 
-[Single responsibility principle](#single-responsibility-principle)
+[단일 책임 원칙(Single responsibility principle)](#single-responsibility-principle)
 
 [Fat models, skinny controllers](#fat-models-skinny-controllers)
 
@@ -53,9 +53,9 @@ Translations:
 
 ### **Single responsibility principle**
 
-A class and a method should have only one responsibility.
+클래스와 메서드는하나의 책임만있어야 합니다.
 
-Bad:
+나쁜 예:
 
 ```php
 public function getFullNameAttribute()
@@ -68,7 +68,7 @@ public function getFullNameAttribute()
 }
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function getFullNameAttribute()
@@ -92,7 +92,7 @@ public function getFullNameShort()
 }
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Fat models, skinny controllers**
 
