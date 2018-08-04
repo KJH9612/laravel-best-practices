@@ -22,7 +22,7 @@ Translations:
 
 [비즈니스 로직은 서비스 클래스에 있어야 합니다](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
 
-[Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
+[중복 배제(Don't repeat yourself)](#dont-repeat-yourself-dry)
 
 [Prefer to use Eloquent over using Query Builder and raw SQL queries. Prefer collections over arrays](#prefer-to-use-eloquent-over-using-query-builder-and-raw-sql-queries-prefer-collections-over-arrays)
 
@@ -218,7 +218,7 @@ class ArticleService
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Don't repeat yourself (DRY)**
+### **중복 배제(Don't repeat yourself)**
 
 Reuse code when you can. SRP is helping you to avoid duplication. Also, reuse Blade templates, use Eloquent scopes etc.
 
