@@ -18,7 +18,7 @@ Translations:
 
 [모델은 무겁게, 컨트롤러는 가볍게](#모델은-무겁게-컨트롤러는-가볍게)
 
-[Validation-유효성 검사](#Validation-유효성-검사)
+[Validation-유효성 검사](#validation-유효성-검사)
 
 [비즈니스 로직은 서비스 클래스에 있어야 합니다](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
 
@@ -137,7 +137,6 @@ class Client extends Model
 
 ### **Validation-유효성 검사**
 
-Move validation from controllers to Request classes.
 유효성 검사 로직을 컨트롤러에서 Request 클래스로 옮깁니다.
 
 나쁜 예:
