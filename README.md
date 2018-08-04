@@ -15,9 +15,9 @@ Translations:
 
 ## Contents
 
-[단일 책임 원칙](#단일 )
+[단일 책임 원칙](#단일 책임 원칙)
 
-[Fat models, skinny controllers](#fat-models-skinny-controllers)
+[모델은 무겁게, 컨트롤러는 가볍게](#모델은 무겁게, 컨트롤러는 가볍게)
 
 [Validation](#validation)
 
@@ -96,9 +96,9 @@ public function getFullNameShort()
 
 ### **Fat models, skinny controllers**
 
-Put all DB related logic into Eloquent models or into Repository classes if you're using Query Builder or raw SQL queries.
+Query Builder나 raw SQL 쿼리를 사용하고 있다면 DB와 관련된 로직은 Eloquent 모델이나 Repository 클래스에 작성되어야 합니다. 
 
-Bad:
+나쁜 예:
 
 ```php
 public function index()
@@ -113,7 +113,7 @@ public function index()
 }
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function index()
@@ -134,7 +134,7 @@ class Client extends Model
 }
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Validation**
 
