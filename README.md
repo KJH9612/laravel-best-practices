@@ -26,7 +26,7 @@ Translations:
 
 [Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다.](#query-builder-raw-sql-쿼리보다-eloquent를-사용하는-것이-좋습니다)
 
-[Mass assignment-대량 할당](#mass-assignment)
+[Mass assignment-대량 할당](#mass-assignment-대량-할당)
 
 [Do not execute queries in Blade templates and use eager loading (N + 1 problem)](#do-not-execute-queries-in-blade-templates-and-use-eager-loading-n--1-problem)
 
