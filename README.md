@@ -20,11 +20,11 @@ Translations:
 
 [Validation-유효성 검사](#validation-유효성-검사)
 
-[비즈니스 로직은 서비스 클래스에 있어야 합니다](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
+[비즈니스 로직은 서비스 클래스에 있어야 합니다.](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
 
 [중복 배제(Don't repeat yourself)](#중복-배제dont-repeat-yourself)
 
-[Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다. 그리고 배열보다는 컬렉션의 사용하는 것이 좋습니다.](#prefer-to-use-eloquent-over-using-query-builder-and-raw-sql-queries-prefer-collections-over-arrays)
+[Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다.](#query-builder-raw-sql-쿼리보다-eloquent를-사용하는-것이-좋습니다)
 
 [Mass assignment](#mass-assignment)
 
@@ -220,7 +220,7 @@ class ArticleService
 
 ### **중복 배제(Don't repeat yourself)**
 
-코드를 재사용합니다. 단일 책임 원칙뿐만 아니라 Blade templetes, Eloquent scope 등은 코드의 중복을 피할 수 있도록 도와줍니다.
+코드를 재사용합니다. 단일 책임 원칙뿐만 아니라 블레이드 템플릿, Eloquent 스코프 등은 코드의 중복을 피할 수 있도록 도와줍니다.
 
 나쁜 예:
 
@@ -261,11 +261,12 @@ public function getArticles()
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다. 그리고 배열보다는 컬렉션의 사용하는 것이 좋습니다.**
+### **Query Builder, raw SQL 쿼리보다 Eloquent를 사용하는 것이 좋습니다.**
 
-Eloquent allows you to write readable and maintainable code. Also, Eloquent has great built-in tools like soft deletes, events, scopes etc.
+Eloquent를 사용하면 읽기 쉽고 유지 보수할 수 있는 코드를 작성할 수 있습니다. Eloquent는 소프트 삭제, 이벤트, 스코프 등 좋은 기능이 있습니다.
 
-Bad:
+나쁜 예:
+
 
 ```sql
 SELECT *
@@ -282,7 +283,7 @@ AND `active` = '1'
 ORDER BY `created_at` DESC
 ```
 
-Good:
+좋은 예:
 
 ```php
 Article::has('user.profile')->verified()->latest()->get();
