@@ -94,9 +94,9 @@ public function getFullNameShort()
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Fat models, skinny controllers**
+### **모델은 무겁게, 컨트롤러는 가볍게**
 
-Query Builder나 raw SQL 쿼리를 사용하고 있다면 DB와 관련된 로직은 Eloquent 모델이나 Repository 클래스에 작성되어야 합니다. 
+DB와 관련된 로직은 Eloquent 모델이나 Repository 클래스에 작성되어야 합니다. 
 
 나쁜 예:
 
