@@ -2,8 +2,8 @@
 
 Translations:
 
-- [Русский](russian.md)
-- [임영록(Cherrypick)](korean.md)
+- [Русский : Russian](russian.md)
+- [임영록(cherrypick) : korean](korean.md)
 
 
 
