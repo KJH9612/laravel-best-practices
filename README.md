@@ -18,9 +18,9 @@ Translations:
 
 [모델은 무겁게, 컨트롤러는 가볍게](#모델은-무겁게-컨트롤러는-가볍게)
 
-[Validation](#validation)
+[Validation-유효성 검사](#Validation-유효성-검사)
 
-[Business logic should be in service class](#business-logic-should-be-in-service-class)
+[비즈니스 로직은 서비스 클래스에 있어야 합니다](#비즈니스-로직은-서비스-클래스에-있어야-합니다)
 
 [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
 
@@ -135,11 +135,12 @@ class Client extends Model
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Validation**
+### **Validation-유효성 검사**
 
 Move validation from controllers to Request classes.
+유효성 검사 로직을 컨트롤러에서 Request 클래스로 옮깁니다.
 
-Bad:
+나쁜 예:
 
 ```php
 public function store(Request $request)
@@ -154,7 +155,7 @@ public function store(Request $request)
 }
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function store(PostRequest $request)
@@ -175,13 +176,14 @@ class PostRequest extends Request
 }
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Business logic should be in service class**
+### **비즈니스 로직은 서비스 클래스에 있어야 합니다**
 
-A controller must have only one responsibility, so move business logic from controllers to service classes.
+컨트롤러는 하나의 책임만 가지기 때문에 비즈니스 로직은 서비스 클래스에 있어야 합니다.
 
-Bad:
+
+나쁜 예:
 
 ```php
 public function store(Request $request)
@@ -194,7 +196,7 @@ public function store(Request $request)
 }
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function store(Request $request)
@@ -215,7 +217,7 @@ class ArticleService
 }
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Don't repeat yourself (DRY)**
 
