@@ -135,7 +135,7 @@ class Client extends Model
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Validation-유효성 검사**
+### **Validation - 유효성 검사**
 
 Move validation from controllers to Request classes.
 유효성 검사 로직을 컨트롤러에서 Request 클래스로 옮깁니다.
