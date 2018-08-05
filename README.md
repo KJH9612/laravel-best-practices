@@ -32,7 +32,7 @@ Translations:
 
 [코드에 주석을 작성합니다. 그러나 주석보다 의미있는 메서드 이름과 변수 이름을 사용하는 것이 더 좋습니다.](#코드에-주석을-작성합니다-그러나-주석보다-의미있는-메서드-이름과-변수-이름을-사용하는-것이-더-좋습니다)
 
-[Do not put JS and CSS in Blade templates and do not put any HTML in PHP classes](#do-not-put-js-and-css-in-blade-templates-and-do-not-put-any-html-in-php-classes)
+[블레이드 템플릿에 js와 css를 작성하지 말고 php 클래스에 html을 작성하지 않습니다.](#do-not-put-js-and-css-in-blade-templates-and-do-not-put-any-html-in-php-classes)
 
 [Use config and language files, constants instead of text in the code](#use-config-and-language-files-constants-instead-of-text-in-the-code)
 
@@ -360,15 +360,15 @@ if ($this->hasJoins())
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Do not put JS and CSS in Blade templates and do not put any HTML in PHP classes**
+### **블레이드 템플릿에 JS와 CSS를 작성하지 말고 PHP 클래스에 HTML을 작성하지 않습니다.**
 
-Bad:
+나쁜 예:
 
 ```php
 let article = `{{ json_encode($article) }}`;
 ```
 
-Better:
+조금 더 나은 예:
 
 ```php
 <input id="article" type="hidden" value="{{ json_encode($article) }}">
@@ -378,7 +378,7 @@ Or
 <button class="js-fav-article" data-article="{{ json_encode($article) }}">{{ $article->name }}<button>
 ```
 
-In a Javascript file:
+자바스크립트 파일:
 
 ```php
 let article = $('#article').val();
@@ -386,11 +386,11 @@ let article = $('#article').val();
 
 The best way is to use specialized PHP to JS package to transfer the data.
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Use config and language files, constants instead of text in the code**
+### **코드에 텍스트로 작성하지 말고, 설정 파일, 언어 파일, 상수 등을 사용합니다.**
 
-Bad:
+나쁜 예:
 
 ```php
 public function isNormal()
@@ -401,7 +401,7 @@ public function isNormal()
 return back()->with('message', 'Your article has been added!');
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function isNormal()
@@ -412,10 +412,11 @@ public function isNormal()
 return back()->with('message', __('app.article_added'));
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Use standard Laravel tools accepted by community**
+### **라라벨 커뮤니티에서 수용하는 표준 라라벨 도구를 사용합니다.**
 
+써드파티 패키지 및 도구 대신 내장되어있는 라라벨 기능과 커뮤니티 패키지를 사용합니다. 프로젝트에 참여하게 되는 개발자는 새로운 도구에 대해 학습을 해야합니다. 또한 써드파티 패키지나 도구를 사용할 때 라라벨 커뮤니티의 도움을 받을 수 있는 기회가 줄어듭니다. 
 Prefer to use built-in Laravel functionality and community packages instead of using 3rd party packages and tools. Any developer who will work with your app in the future will need to learn new tools. Also, chances to get help from the Laravel community are significantly lower when you're using a 3rd party package or tool. Do not make your client pay for that.
 
 Task | Standard tools | 3rd party tools
@@ -440,13 +441,13 @@ Generating testing data | Seeder classes, Model Factories, Faker | Creating test
 Task scheduling | Laravel Task Scheduler | Scripts and 3rd party packages
 DB | MySQL, PostgreSQL, SQLite, SQL Server | MongoDB
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Follow Laravel naming conventions**
+### **라라벨 네이밍 규칙을 따릅니다.**
 
- Follow [PSR standards](http://www.php-fig.org/psr/psr-2/).
+ [PSR 표준](http://www.php-fig.org/psr/psr-2/)을 따릅니다.
  
- Also, follow naming conventions accepted by Laravel community:
+또한 라라벨 커뮤니티에서 수용하고 있는 네이밍 규칙을 따릅니다:
 
 What | How | Good | Bad
 ------------ | ------------- | ------------- | -------------
@@ -477,23 +478,23 @@ Trait | adjective | Notifiable | ~~NotificationTrait~~
 
 [🔝 Back to contents](#contents)
 
-### **Use shorter and more readable syntax where possible**
+### **가능하면 짧고 읽기 쉬운 문법을 사용합니다.**
 
-Bad:
+나쁜 예:
 
 ```php
 $request->session()->get('cart');
 $request->input('name');
 ```
 
-Good:
+좋은 예:
 
 ```php
 session('cart');
 $request->name;
 ```
 
-More examples:
+더 많은 예시:
 
 Common syntax | Shorter and more readable syntax
 ------------ | -------------
@@ -514,20 +515,20 @@ Common syntax | Shorter and more readable syntax
 `->select('id', 'name')->get()` | `->get(['id', 'name'])`
 `->first()->name` | `->value('name')`
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Use IoC container or facades instead of new Class**
+### **new Class 대신 IoC 컨테이너 또는 파사드를 사용합니다.**
 
-new Class syntax creates tight coupling between classes and complicates testing. Use IoC container or facades instead.
+new Class 문법은 클래스 간의 결합도를 높이고 테스트를 복잡하게 만듭니다. new Class 문법 대신에 IoC 컨테이너 또는 파사드를 사용합니다.
 
-Bad:
+나쁜 예:
 
 ```php
 $user = new User;
 $user->create($request->all());
 ```
 
-Good:
+좋은 예:
 
 ```php
 public function __construct(User $user)
@@ -540,7 +541,7 @@ public function __construct(User $user)
 $this->user->create($request->all());
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **Do not get data from the `.env` file directly**
 
