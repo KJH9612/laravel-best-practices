@@ -5,9 +5,9 @@ Translations:
 - [Русский : Russian](russian.md)
 - [임영록(cherrypick) : Korean](korean.md)
 
-이 문서가 도움이 되셨다면 현재 레퍼지토리뿐만 아니라, 번역 전 레퍼지토리도 Star 한 번씩 눌러주시면 감사하겠습니다. :D
+이 문서가 도움이 되셨다면 현재 레퍼지토리뿐만 아니라, 원본 레퍼지토리도 한 번씩 star를 눌러주시면 감사하겠습니다. :D
 <br>
-레퍼지토리: https://github.com/alexeymezenin/laravel-best-practices
+원본 레퍼지토리: https://github.com/alexeymezenin/laravel-best-practices
 
 이 문서는 라라벨 프레임워크에서 객체지향 디자인의 5원칙(SOLID), 패턴 등을 적용한 내용이 아닙니다. 라라벨 프레임워크로 프로젝트를 진행하면서 놓칠 수 있는 Best practice에 대해 정리한 글입니다.
 
@@ -32,23 +32,23 @@ Translations:
 
 [코드에 주석을 작성합니다. 그러나 주석보다 의미있는 메서드 이름과 변수 이름을 사용하는 것이 더 좋습니다.](#코드에-주석을-작성합니다-그러나-주석보다-의미있는-메서드-이름과-변수-이름을-사용하는-것이-더-좋습니다)
 
-[블레이드 템플릿에 js와 css를 작성하지 말고 php 클래스에 html을 작성하지 않습니다.](#do-not-put-js-and-css-in-blade-templates-and-do-not-put-any-html-in-php-classes)
+[블레이드 템플릿에 js와 css를 작성하지 말고 php 클래스에 html을 작성하지 않습니다.](#블레이드-템플릿에-js와-css를-작성하지-말고-php-클래스에-html을-작성하지-않습니다)
 
-[Use config and language files, constants instead of text in the code](#use-config-and-language-files-constants-instead-of-text-in-the-code)
+[코드에 텍스트로 작성하지 말고, 설정 파일, 언어 파일, 상수 등을 사용합니다.](#코드에-텍스트로-작성하지-말고-설정-파일-언어-파일-상수-등을-사용합니다)
 
-[Use standard Laravel tools accepted by community](#use-standard-laravel-tools-accepted-by-community)
+[라라벨 커뮤니티에서 수용하는 표준 라라벨 도구를 사용합니다.](#라라벨-커뮤니티에서-수용하는-표준-라라벨-도구를-사용합니다)
 
-[Follow Laravel naming conventions](#follow-laravel-naming-conventions)
+[라라벨 네이밍 규칙을 따릅니다.](#라라벨-네이밍-규칙을-따릅니다)
 
-[Use shorter and more readable syntax where possible](#use-shorter-and-more-readable-syntax-where-possible)
+[될 수 있으면 짧고 읽기 쉬운 문법을 사용합니다.](#될-수-있으면-짧고-읽기-쉬운-문법을-사용합니다)
 
-[Use IoC container or facades instead of new Class](#use-ioc-container-or-facades-instead-of-new-class)
+[new Class 대신 IoC 컨테이너 또는 파사드를 사용합니다.](#new-class-대신-ioc-컨테이너-또는-파사드를-사용합니다)
 
-[Do not get data from the `.env` file directly](#do-not-get-data-from-the-env-file-directly)
+[.env 파일에서 직접 데이터를 가져오지 않습니다.](#env-파일에서-직접-데이터를-가져오지-않습니다)
 
-[Store dates in the standard format. Use accessors and mutators to modify date format](#store-dates-in-the-standard-format-use-accessors-and-mutators-to-modify-date-format)
+[날짜를 표준 형식으로 저장합니다. accessors(get), mutators(set)을 사용해 날짜 형식을 수정합니다.](#날짜를-표준-형식으로-저장합니다-accessorsget-mutatorsset을-사용해-날짜-형식을-수정합니다)
 
-[Other good practices](#other-good-practices)
+[다른 좋은 사례](#다른-좋은-사례)
 
 ### **단일 책임 원칙**
 
@@ -417,7 +417,6 @@ return back()->with('message', __('app.article_added'));
 ### **라라벨 커뮤니티에서 수용하는 표준 라라벨 도구를 사용합니다.**
 
 써드파티 패키지 및 도구 대신 내장되어있는 라라벨 기능과 커뮤니티 패키지를 사용합니다. 프로젝트에 참여하게 되는 개발자는 새로운 도구에 대해 학습을 해야합니다. 또한 써드파티 패키지나 도구를 사용할 때 라라벨 커뮤니티의 도움을 받을 수 있는 기회가 줄어듭니다. 
-Prefer to use built-in Laravel functionality and community packages instead of using 3rd party packages and tools. Any developer who will work with your app in the future will need to learn new tools. Also, chances to get help from the Laravel community are significantly lower when you're using a 3rd party package or tool. Do not make your client pay for that.
 
 Task | Standard tools | 3rd party tools
 ------------ | ------------- | -------------
@@ -476,7 +475,7 @@ Config | snake_case | google_calendar.php | ~~googleCalendar.php, google-calenda
 Contract (interface) | adjective or noun | Authenticatable | ~~AuthenticationInterface, IAuthentication~~
 Trait | adjective | Notifiable | ~~NotificationTrait~~
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
 ### **될 수 있으면 짧고 읽기 쉬운 문법을 사용합니다.**
 
@@ -543,7 +542,7 @@ $this->user->create($request->all());
 
 [🔝 목차로 돌아가기](#contents)
 
-### **.env 파일에서 직접 데이터를 가져오지 않습니다.**
+### **`.env` 파일에서 직접 데이터를 가져오지 않습니다.**
 
 데이터를 설정 파일에 전달한 다음 `config()` helper 함수를 통해 애플리케이션에서 데이터를 사용합니다.
 
