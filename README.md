@@ -478,7 +478,7 @@ Trait | adjective | Notifiable | ~~NotificationTrait~~
 
 [🔝 Back to contents](#contents)
 
-### **가능하면 짧고 읽기 쉬운 문법을 사용합니다.**
+### **될 수 있으면 짧고 읽기 쉬운 문법을 사용합니다.**
 
 나쁜 예:
 
@@ -543,17 +543,17 @@ $this->user->create($request->all());
 
 [🔝 목차로 돌아가기](#contents)
 
-### **Do not get data from the `.env` file directly**
+### **.env 파일에서 직접 데이터를 가져오지 않습니다.**
 
-Pass the data to config files instead and then use the `config()` helper function to use the data in an application.
+데이터를 설정 파일에 전달한 다음 `config()` helper 함수를 통해 애플리케이션에서 데이터를 사용합니다.
 
-Bad:
+나쁜 예:
 
 ```php
 $apiKey = env('API_KEY');
 ```
 
-Good:
+좋은 예:
 
 ```php
 // config/api.php
@@ -563,18 +563,18 @@ Good:
 $apiKey = config('api.key');
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Store dates in the standard format. Use accessors and mutators to modify date format**
+### **날짜를 표준 형식으로 저장합니다. accessors(get), mutators(set)을 사용해 날짜 형식을 수정합니다.**
 
-Bad:
+나쁜 예:
 
 ```php
 {{ Carbon::createFromFormat('Y-d-m H-i', $object->ordered_at)->toDateString() }}
 {{ Carbon::createFromFormat('Y-d-m H-i', $object->ordered_at)->format('m-d') }}
 ```
 
-Good:
+좋은 예:
 
 ```php
 // Model
@@ -589,12 +589,12 @@ public function getSomeDateAttribute($date)
 {{ $object->ordered_at->some_date }}
 ```
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
 
-### **Other good practices**
+### **다른 좋은 사례**
 
-Never put any logic in routes files.
+라우트 파일에 로직을 작성하지 않습니다.
 
-Minimize usage of vanilla PHP in Blade templates.
+블레이드 템플릿에 바닐라 PHP의 사용을 최소화합니다.
 
-[🔝 Back to contents](#contents)
+[🔝 목차로 돌아가기](#contents)
