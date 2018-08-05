@@ -1,6 +1,6 @@
 ![Laravel best practices](/images/logo-english.png?raw=true)
 
-Translations:
+번역:
 
 - [Русский : Russian](russian.md)
 - [임영록(cherrypick) : Korean](korean.md)
