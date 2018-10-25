@@ -2,8 +2,13 @@
 
 번역:
 
-- [Русский : Russian](russian.md)
-- [임영록(cherrypick) : Korean](korean.md)
+[한국어](https://github.com/xotrs/laravel-best-practices) (by [임영록(cherrypick)](https://github.com/xotrs))
+
+[Русский](https://github.com/alexeymezenin/laravel-best-practices/)(by [alexeymezenin])(https://github.com/alexeymezenin/laravel-best-practices/)
+
+[Português](https://github.com/jonaselan/laravel-best-practices) (by [jonaselan](https://github.com/jonaselan))
+
+[Tiếng Việt](https://chungnguyen.xyz/posts/code-laravel-lam-sao-cho-chuan) (by [Chung Nguyễn](https://github.com/nguyentranchung))
 
 이 문서가 도움이 되셨다면 현재 레퍼지토리뿐만 아니라, 원본 레퍼지토리도 한 번씩 star를 눌러주시면 감사하겠습니다. :D
 <br>
