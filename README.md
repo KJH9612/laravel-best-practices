@@ -4,7 +4,7 @@
 
 [한국어](https://github.com/xotrs/laravel-best-practices) (by [임영록(cherrypick)](https://github.com/xotrs))
 
-[Русский](https://github.com/alexeymezenin/laravel-best-practices/)(by [alexeymezenin](https://github.com/alexeymezenin/laravel-best-practices/))
+[Русский](https://github.com/alexeymezenin/laravel-best-practices/)(by [alexeymezenin](https://github.com/alexeymezenin))
 
 [Português](https://github.com/jonaselan/laravel-best-practices) (by [jonaselan](https://github.com/jonaselan))
 
