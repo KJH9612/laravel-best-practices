@@ -35,6 +35,8 @@
 
 [블레이드 템플릿에서 쿼리를 실행하지 않습니다. 그리고 즉시 로딩을 사용합니다.(N + 1 문제)](#블레이드-템플릿에서-쿼리를-실행하지-않습니다-그리고-즉시-로딩을-사용합니다n--1-문제)
 
+[무거운 데이터 작업은 데이터를 나눕니다.](#무거운-데이터-작업은-데이터를-나눕니다)
+
 [코드에 주석을 작성합니다. 하지만 주석보다 의미있는 메서드 이름과 변수 이름을 사용하는 것이 더 좋습니다.](#코드에-주석을-작성합니다-하지만-주석보다-의미있는-메서드-이름과-변수-이름을-사용하는-것이-더-좋습니다)
 
 [블레이드 템플릿에 JS와 CSS를 작성하지 않고 PHP 클래스에 HTML을 작성하지 않습니다.](#블레이드-템플릿에-js와-css를-작성하지-않고-php-클래스에-html을-작성하지-않습니다)
@@ -62,7 +64,7 @@
 나쁜 예:
 
 ```php
-public function getFullNameAttribute()
+public function getFullNameAttribute(): string
 {
     if (auth()->user() && auth()->user()->hasRole('client') && auth()->user()->isVerified()) {
         return 'Mr. ' . $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
@@ -75,22 +77,22 @@ public function getFullNameAttribute()
 좋은 예:
 
 ```php
-public function getFullNameAttribute()
+public function getFullNameAttribute(): string
 {
     return $this->isVerifiedClient() ? $this->getFullNameLong() : $this->getFullNameShort();
 }
 
-public function isVerifiedClient()
+public function isVerifiedClient(): bool
 {
     return auth()->user() && auth()->user()->hasRole('client') && auth()->user()->isVerified();
 }
 
-public function getFullNameLong()
+public function getFullNameLong(): string
 {
     return 'Mr. ' . $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
 }
 
-public function getFullNameShort()
+public function getFullNameShort(): string
 {
     return $this->first_name[0] . '. ' . $this->last_name;
 }
@@ -127,7 +129,7 @@ public function index()
 
 class Client extends Model
 {
-    public function getWithNewOrders()
+    public function getWithNewOrders(): Collection
     {
         return $this->verified()
             ->with(['orders' => function ($q) {
@@ -169,7 +171,7 @@ public function store(PostRequest $request)
 
 class PostRequest extends Request
 {
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => 'required|unique:posts|max:255',
@@ -212,7 +214,7 @@ public function store(Request $request)
 
 class ArticleService
 {
-    public function handleUploadedImage($image)
+    public function handleUploadedImage($image): void
     {
         if (!is_null($image)) {
             $image->move(public_path('images') . 'temp');
@@ -251,12 +253,12 @@ public function scopeActive($q)
     return $q->where('verified', 1)->whereNotNull('deleted_at');
 }
 
-public function getActive()
+public function getActive(): Collection
 {
     return $this->active()->get();
 }
 
-public function getArticles()
+public function getArticles(): Collection
 {
     return $this->whereHas('user', function ($q) {
             $q->active();
@@ -313,7 +315,7 @@ $article->save();
 좋은 예:
 
 ```php
-$category->article()->create($request->all());
+$category->article()->create($request->validated());
 ```
 
 [🔝 목차로 돌아가기](#contents)
@@ -338,6 +340,30 @@ $users = User::with('profile')->get();
 @foreach ($users as $user)
     {{ $user->profile->name }}
 @endforeach
+```
+
+[🔝 목차로 돌아가기](#contents)
+
+### **무거운 데이터 작업은 데이터를 나눕니다.**
+
+나쁜 예:
+
+```php
+$users = $this->get();
+
+foreach ($users as $user) {
+    ...
+}
+```
+
+좋은 예:
+
+```php
+$this->chunk(500, function ($users) {
+    foreach ($users as $user) {
+        ...
+    }
+});
 ```
 
 [🔝 목차로 돌아가기](#contents)
@@ -426,17 +452,17 @@ return back()->with('message', __('app.article_added'));
 Task | Standard tools | 3rd party tools
 ------------ | ------------- | -------------
 Authorization | Policies | Entrust, Sentinel and other packages
-Compiling assets | Laravel Mix | Grunt, Gulp, 3rd party packages
-Development Environment | Homestead | Docker
+Compiling assets | Laravel Mix, Vite | Grunt, Gulp, 3rd party packages
+Development Environment | Laravel Sail, Homestead | Docker
 Deployment | Laravel Forge | Deployer and other solutions
-Unit testing | PHPUnit, Mockery | Phpspec
+Unit testing | PHPUnit, Mockery | Phpspec, Pest
 Browser testing | Laravel Dusk | Codeception
 DB | Eloquent | SQL, Doctrine
 Templates | Blade | Twig
 Working with data | Laravel collections | Arrays
 Form validation | Request classes | 3rd party packages, validation in controller
 Authentication | Built-in | 3rd party packages, your own solution
-API authentication | Laravel Passport | 3rd party JWT and OAuth packages
+API authentication | Laravel Passport, Laravel Sanctum | 3rd party JWT and OAuth packages
 Creating API | Built-in | Dingo API and similar packages
 Working with DB structure | Migrations | Working with DB structure directly
 Localization | Built-in | 3rd party packages
@@ -479,6 +505,10 @@ View | snake_case | show_filtered.blade.php | ~~showFiltered.blade.php, show-fil
 Config | snake_case | google_calendar.php | ~~googleCalendar.php, google-calendar.php~~
 Contract (interface) | adjective or noun | Authenticatable | ~~AuthenticationInterface, IAuthentication~~
 Trait | adjective | Notifiable | ~~NotificationTrait~~
+Trait [(PSR)](https://www.php-fig.org/bylaws/psr-naming-conventions/) | adjective | NotifiableTrait | ~~Notification~~
+Enum | singular | UserType | ~~UserTypes~~, ~~UserTypeEnum~~
+FormRequest | singular | UpdateUserRequest | ~~UpdateUserFormRequest~~, ~~UserFormRequest~~, ~~UserRequest~~
+Seeder | singular | UserSeeder | ~~UsersSeeder~~
 
 [🔝 목차로 돌아가기](#contents)
 
@@ -507,7 +537,7 @@ Common syntax | Shorter and more readable syntax
 `Session::put('cart', $data)` | `session(['cart' => $data])`
 `$request->input('name'), Request::get('name')` | `$request->name, request('name')`
 `return Redirect::back()` | `return back()`
-`is_null($object->relation) ? $object->relation->id : null }` | `optional($object->relation)->id`
+`is_null($object->relation) ? null : $object->relation->id` | `optional($object->relation)->id` (in PHP 8: `$object->relation?->id`)
 `return view('index')->with('title', $title)->with('client', $client)` | `return view('index', compact('title', 'client'))`
 `$request->has('value') ? $request->value : 'default';` | `$request->get('value', 'default')`
 `Carbon::now(), Carbon::today()` | `now(), today()`
@@ -542,7 +572,7 @@ public function __construct(User $user)
 
 ....
 
-$this->user->create($request->all());
+$this->user->create($request->validated());
 ```
 
 [🔝 목차로 돌아가기](#contents)
@@ -600,5 +630,13 @@ public function getSomeDateAttribute($date)
 라우트 파일에 로직을 작성하지 않습니다.
 
 블레이드 템플릿에 바닐라 PHP의 사용을 최소화합니다.
+
+테스트시 in-memory DB 를 사용합니다.
+
+프레임워크 버전 업데이트 혹은 다른 이슈와 관련된 문제를 피하기 위해 프레임워크 표준 사양들을 오버라이드 하지마세요.
+
+가능하면 Modern PHP 문법을 사용하고 가독성을 신경써주세요.
+
+잘 알고 사용하는게 아닌 이상 View Composers 와 이와 비슷한 툴 사용을 피하세요. 대부분의 경우 이보다 더 나은 해결방법이 있습니다.
 
 [🔝 목차로 돌아가기](#contents)
